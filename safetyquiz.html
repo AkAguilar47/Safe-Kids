@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safety Quiz for Kids</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #c5cae9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .question {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .question h2 {
+            font-size: 20px;
+        }
+
+        .answers {
+            margin-top: 10px;
+        }
+
+        .btn {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        .correct {
+            color: green;
+            font-weight: bold;
+        }
+
+        .incorrect {
+            color: red;
+            font-weight: bold;
+        }
+
+        #quiz-completed {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Safety Quiz</h1>
+    <div id="quiz">
+        <div class="question" id="question-1">
+            <h2>If someone makes you feel scared, nervous, or uncomfortable, what should you do?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(1, 'trust your feelings')">A. Trust your feelings</button>
+                <button class="btn" onclick="checkAnswer(1, 'ignore your feelings')">B. Ignore your feelings</button>
+            </div>
+            <div id="result-1" class="result"></div>
+        </div>
+        <div class="question" id="question-2" style="display: none;">
+            <h2>If an adult asks you to keep a secret from your parents or guardians, what should you do?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(2, 'keep the secret')">A. Keep the secret</button>
+                <button class="btn" onclick="checkAnswer(2, 'tell a trusted adult')">B. Tell a trusted adult</button>
+            </div>
+            <div id="result-2" class="result"></div>
+        </div>
+        <div class="question" id="question-3" style="display: none;">
+            <h2>If someone tries to touch you in a way that feels wrong or makes you uncomfortable, what should you do?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(3, 'tell a trusted adult')">A. Tell a trusted adult</button>
+                <button class="btn" onclick="checkAnswer(3, 'keep it to yourself')">B. Keep it to yourself</button>
+            </div>
+            <div id="result-3" class="result"></div>
+        </div>
+        <div class="question" id="question-4" style="display: none;">
+            <h2>If a stranger offers you gifts, candy, or money, what should you do?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(4, 'be cautious and find a trusted adult')">A. Be cautious and find a trusted adult</button>
+                <button class="btn" onclick="checkAnswer(4, 'accept the gifts')">B. Accept the gifts</button>
+            </div>
+            <div id="result-4" class="result"></div>
+        </div>
+        <div class="question" id="question-5" style="display: none;">
+            <h2>If an adult you don't know asks you for help, like finding a lost pet or giving directions, what should you do?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(5, 'help them yourself')">A. Help them yourself</button>
+                <button class="btn" onclick="checkAnswer(5, 'find a trusted adult to help them')">B. Find a trusted adult to help them</button>
+
+            </div>
+            <div id="result-5" class="result"></div>
+        </div>
+        <div class="question" id="question-6" style="display: none;">
+            <h2>If someone you don't know is following you, what should you do?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(6, 'go to a safe place and tell a trusted adult')">A. Go to a safe place and tell a trusted adult</button>
+                <button class="btn" onclick="checkAnswer(6, 'keep walking and ignore them')">B. Keep walking and ignore them</button>
+            </div>
+            <div id="result-6" class="result"></div>
+        </div>
+        <div class="question" id="question-7" style="display: none;">
+            <h2>When talking to people online, what should you never share?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(7, 'personal information like your address, phone number, or school')">A. Personal information like your address, phone number, or school</button>
+                <button class="btn" onclick="checkAnswer(7, 'your favorite color')">B. Your favorite color</button>
+            </div>
+            <div id="result-7" class="result"></div>
+        </div>
+    </div>
+    <div id="quiz-completed">
+        <h2>Quiz Completed!</h2>
+        <p>You answered <span id="correct-answers-count"></span> out of 7 questions correctly.</p>
+        <button class="btn" onclick="retryQuiz()">Retry Quiz</button>
+    </div>
+    <script>
+        let currentQuestion = 1;
+        let correctAnswersCount = 0;
+
+        function checkAnswer(question, answer) {
+            const correctAnswers = {
+                1: 'trust your feelings',
+                2: 'tell a trusted adult',
+                3: 'tell a trusted adult',
+                4: 'be cautious and find a trusted adult',
+                5: 'find a trusted adult to help them',
+                6: 'go to a safe place and tell a trusted adult',
+                7: 'personal information like your address, phone number, or school',
+            };
+            const resultDiv = document.getElementById(`result-${question}`);
+            const buttons = document.querySelectorAll(`#question-${question} button`);
+            const correctAnswer = correctAnswers[question];
+            buttons.forEach(button => button.disabled = true); // Disable buttons after answering
+            if (answer === correctAnswer) {
+                resultDiv.innerHTML = "Correct!";
+                resultDiv.className = "result correct";
+                correctAnswersCount++;
+            } else {
+                resultDiv.innerHTML = "Incorrect!";
+                resultDiv.className = "result incorrect";
+            }
+
+            // Move to the next question
+            setTimeout(() => {
+                document.getElementById(`question-${question}`).style.display = 'none';
+                currentQuestion++;
+                if (currentQuestion <= 7) {
+                    document.getElementById(`question-${currentQuestion}`).style.display = 'block';
+                } else {
+                    document.getElementById('quiz').style.display = 'none';
+                    document.getElementById('quiz-completed').style.display = 'block';
+                    document.getElementById('correct-answers-count').innerText = correctAnswersCount;
+                }
+            }, 1000);
+        }
+
+        function retryQuiz() {
+            currentQuestion = 1;
+            correctAnswersCount = 0;
+            document.getElementById('quiz').style.display = 'block';
+            document.getElementById('quiz-completed').style.display = 'none';
+            for (let i = 1; i <= 7; i++) {
+                document.getElementById(`question-${i}`).style.display = 'none';
+                const resultDiv = document.getElementById(`result-${i}`);
+                resultDiv.innerHTML = "";
+                const buttons = document.querySelectorAll(`#question-${i} button`);
+                buttons.forEach(button => button.disabled = false);
+            }
+            document.getElementById(`question-1`).style.display = 'block';
+        }
+    </script>

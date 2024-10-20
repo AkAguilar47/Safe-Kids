@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self-Care Quiz for Teens</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #c5cae9;
+            margin: 0;
+            padding: 20px;
+        }
+        .question {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+        .question h2 {
+            font-size: 20px;
+        }
+        .answers {
+            margin-top: 10px;
+        }
+        .btn {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .result {
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+        .correct {
+            color: green;
+            font-weight: bold;
+        }
+        .incorrect {
+            color: red;
+            font-weight: bold;
+        }
+        #quiz-completed {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hygiene Quiz for Kids</h1>
+    <div id="quiz">
+        <div class="question" id="question-1">
+            <h2>When should you wash your hands?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(1, 'before_eating')">A. Before eating, after using the bathroom, and when you touch something dirty</button>
+                <button class="btn" onclick="checkAnswer(1, 'only_morning')">B. Only in the morning</button>
+            </div>
+            <div id="result-1" class="result"></div>
+        </div>
+        <div class="question" id="question-2" style="display: none;">
+            <h2>How often should you brush your teeth?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(2, 'twice_daily')">A. Twice a day, in the morning and before bed</button>
+                <button class="btn" onclick="checkAnswer(2, 'once_daily')">B. Once a day</button>
+            </div>
+            <div id="result-2" class="result"></div>
+        </div>
+        <div class="question" id="question-3" style="display: none;">
+            <h2>How long should you scrub your hands with soap?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(3, '20_seconds')">A. 20 seconds</button>
+                <button class="btn" onclick="checkAnswer(3, '5_seconds')">B. 5 seconds</button>
+            </div>
+            <div id="result-3" class="result"></div>
+        </div>
+        <div class="question" id="question-4" style="display: none;">
+            <h2>What should you do after sneezing or coughing?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(4, 'wash_hands')">A. Use a tissue or your elbow to cover your mouth and nose, then wash your hands</button>
+                <button class="btn" onclick="checkAnswer(4, 'nothing')">B. Nothing</button>
+            </div>
+            <div id="result-4" class="result"></div>
+        </div>
+        <div class="question" id="question-5" style="display: none;">
+            <h2>How often should you change your bedding?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(5, 'weekly')">A. Once a week</button>
+                <button class="btn" onclick="checkAnswer(5, 'monthly')">B. Once a month</button>
+            </div>
+            <div id="result-5" class="result"></div>
+        </div>
+        <div class="question" id="question-6" style="display: none;">
+            <h2>When should you apply deodorant?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(6, 'after_shower')">A. Every day, usually after you shower</button>
+                <button class="btn" onclick="checkAnswer(6, 'once_weekly')">B. Once a week</button>
+            </div>
+            <div id="result-6" class="result"></div>
+        </div>
+        <div class="question" id="question-7" style="display: none;">
+            <h2>How often should you floss your teeth?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(7, 'once_daily')">A. Once a day</button>
+                <button class="btn" onclick="checkAnswer(7, 'weekly')">B. Once a week</button>
+            </div>
+            <div id="result-7" class="result"></div>
+        </div>
+        <div class="question" id="question-8" style="display: none;">
+            <h2>How often should you wash your feet?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(8, 'daily')">A. Daily</button>
+                <button class="btn" onclick="checkAnswer(8, 'weekly')">B. Weekly</button>
+            </div>
+            <div id="result-8" class="result"></div>
+        </div>
+    </div>
+    <div id="quiz-completed">
+        <h2>Quiz Completed!</h2>
+        <p>You answered <span id="correct-answers-count"></span> out of 8 questions correctly.</p>
+        <button class="btn" onclick="retryQuiz()">Retry Quiz</button>
+    </div>
+    <script>
+        let currentQuestion = 1;
+        let correctAnswersCount = 0;
+        function checkAnswer(question, answer) {
+            const correctAnswers = {
+                1: 'before_eating',
+                2: 'twice_daily',
+                3: '20_seconds',
+                4: 'wash_hands',
+                5: 'weekly',
+                6: 'after_shower',
+                7: 'once_daily',
+                8: 'daily',
+            };
+            const resultDiv = document.getElementById(`result-${question}`);
+            const buttons = document.querySelectorAll(`#question-${question} button`);
+            const correctAnswer = correctAnswers[question];
+            buttons.forEach(button => button.disabled = true); // Disable buttons after answering
+            if (answer === correctAnswer) {
+                resultDiv.innerHTML = "Correct!";
+                resultDiv.className = "result correct";
+                correctAnswersCount++;
+            } else {
+                resultDiv.innerHTML = "Incorrect!";
+                resultDiv.className = "result incorrect";
+            }
+            // Move to the next question
+            setTimeout(() => {
+                document.getElementById(`question-${question}`).style.display = 'none';
+                currentQuestion++;
+                if (currentQuestion <= 8) {
+                    document.getElementById(`question-${currentQuestion}`).style.display = 'block';
+                } else {
+                    document.getElementById('quiz').style.display = 'none';
+                    document.getElementById('quiz-completed').style.display = 'block';
+                    document.getElementById('correct-answers-count').innerText = correctAnswersCount;
+                }
+            }, 1000);
+        }
+        function retryQuiz() {
+            currentQuestion = 1;
+            correctAnswersCount = 0;
+            document.getElementById('quiz').style.display = 'block';
+            document.getElementById('quiz-completed').style.display = 'none';
+            for (let i = 1; i <= 8; i++) {
+                document.getElementById(`question-${i}`).style.display = 'none';
+                const resultDiv = document.getElementById(`result-${i}`);
+                resultDiv.innerHTML = "";
+                const buttons = document.querySelectorAll(`#question-${i} button`);
+                buttons.forEach(button => button.disabled = false);
+            }
+            document.getElementById(`question-1`).style.display = 'block';
+        }
+    </script>
+</body>
+</html>

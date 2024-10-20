@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeKids-Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Walter+Turncoat&display=swap" rel="stylesheet">
+
+
+    <style type="text/css">
+        *{
+            text-decoration: none;
+        }
+        .dropdown{
+            display: inline-block;
+            position: relative;
+        }
+        .gamja-flower-regular {
+        font-family: "Gamja Flower", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        }
+        .walter-turncoat-regular {
+            font-family: "Walter Turncoat", cursive;
+            font-weight: 400;
+            font-style: normal;
+        }
+        body{
+            background-color:#f7dddd;
+            margin: 0px;
+        }
+        main{
+            margin-left: 200px;
+            margin-right: 200px;
+            text-align: center;
+        }
+        h1{
+            font-family: "Gamja Flower";
+            background-color: white;
+            text-align: center;
+            margin: 0px;
+        }
+        .navbar ul{
+            list-style-type: none;
+            background-color: rgb(247, 134, 135);
+            padding: 0px;
+            margin: 0px;
+            overflow: hidden;
+        }
+        .navbar a{
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            display: block;
+            text-align: center;
+        }
+        .navbar a:hover{
+            background-color: rgb(245, 119, 121);
+        }
+        .navbar li{
+            float: left;
+        }
+        .dropdown button{
+            background-color: rgb(247, 134, 135);
+            color: white;
+            padding: 15px;
+            border: none;
+            cursor: pointer;
+        }
+        .dropdown a{
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+        }
+        .dropdown .content{
+            display: none;
+            position: relative;
+            background-color: rgb(245, 119, 121);
+            min-width: 135px;
+            box-shadow: 2px 2px 5px hsla(0, 0%, 0%, 0.6);
+            z-index: 1;
+        }
+        .dropdown:hover .content{
+            display: block;
+        }
+        .dropdown:hover button{
+            background-color: rgb(245, 119, 121);
+        }
+        .dropdown a:hover{
+            background-color: rgb(235, 99, 101);
+        }
+        .images {
+            display: flex;
+            justify-content: Center;
+            align-items: flex-start;
+            margin-bottom:20px;
+        }
+        .images img {
+            max-width: 100%;
+            height: auto;
+            margin: 0 50px;
+        }
+        h2 {
+            font-size: 3em;
+        }
+        p { 
+            font-size: 1.5em;
+        }
+        .background {
+            height: 100vh;
+            background-image: url('background/flowers.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: repeat;
+        }
+    </style>
+
+</head>
+
+<body class="background">
+
+    <h1 class="gamja-flower-regular">SafeKids</h1>
+
+    <nav class="navbar">
+        <ul>
+            <div class="navdiv">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <button>Police</button>
+                        <div class="content">
+                            <a href="Police.html">How to</a>
+                            <a href="Safety.html">Safety</a>
+                        </div>
+                    </li>
+                    <li><a href="MentalHealth.html">Mental Health</a></li>
+                    <li class = "dropdown">
+                        <button>Personal Hygiene</button>
+                        <div class = "content">
+                            <a href="PersonalHygieneTeens.html">Teens</a>
+                            <a href="PersonalHygieneKids.html">Kids</a>
+                        </div>
+                    </li>
+                    <li><a href="SocialEtiquette.html">Social Etiquette</a></li>
+                    <li class = "dropdown">
+                        <button>PLAY</button>
+                        <div class = "content">
+                            <a href="EmergencyProtocal.html">Protocal quiz</a>
+                            <a href="safetyquiz.html">Safety quiz</a>
+                            <a href="TeenHygieneQuiz.html">Teen Hygiene quiz</a>
+                            <a href="KidHygieneQuiz.html">Kid Hygiene quiz</a>
+                            <a href="SocialEtiquetteQuiz.html">Etiquette quiz</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </ul>
+    </nav>
+
+
+
+    <main class="walter-turncoat-regular">
+        <h2>HOME</h2>
+
+        <div class="images">
+            <img src="Pictures/home.jpg">
+            <img src="Pictures/home2.jpg" width="285" alt="Home2 image">
+        </div>
+
+        <p>We aim for our project to benefit everyone, regardless of age. It’s designed not only to help youth but also to support parents and guardians in teaching these important lessons. Many parents struggle to explain these topics to their children, and some kids don't feel comfortable discussing them with their parents. This website will guide children through these subjects independently and provide a refresher on things that parents might not teach anymore, expecting kids to catch on their own.</p>
+        
+    </main>
+ 
+
+
+</body>
+</html>

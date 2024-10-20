@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeKids-Police</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Walter+Turncoat&display=swap" rel="stylesheet">
+
+
+    <style type="text/css">
+        *{
+            text-decoration: none;
+        }
+        .dropdown{
+            display: inline-block;
+            position: relative;
+        }
+        .gamja-flower-regular {
+        font-family: "Gamja Flower", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        }
+        .walter-turncoat-regular {
+            font-family: "Walter Turncoat", cursive;
+            font-weight: 400;
+            font-style: normal;
+        }
+        body{
+            background-color: #c5cae9;
+            margin: 0px;
+        }
+        main{
+            text-align: center;
+            margin-left: 25px;
+            margin-right: 25px;
+        }
+        .centered-text {
+            text-align: center;
+        }
+        .centered-text p {
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+        .centered-text ol{
+            list-style-position: inside;
+            padding: 0;
+            margin: 0 auto;
+            display: inline-block;
+        }
+        .centered-text ul {
+            list-style-position: inside;
+            padding: 0;
+            margin: 0 auto;
+            display: inline-block;
+        }
+        .centered-text li {
+            font-size: 1.5em;
+            margin: 0.5em 0;
+        }
+        h1{
+            background-color: white;
+            text-align: center;
+            margin: 0px;
+        }
+        .navbar ul{
+            list-style-type: none;
+            background-color: #97a4f8;
+            padding: 0px;
+            margin: 0px;
+            overflow: hidden;
+        }
+        .navbar a{
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            display: block;
+            text-align: center;
+        }
+        .navbar a:hover{
+            background-color: #7e8deb;
+        }
+        .navbar li{
+            float: left;
+        }
+        .dropdown button{
+            background-color: #97a4f8;
+            color: white;
+            padding: 15px;
+            border: none;
+            cursor: pointer;
+        }
+        .dropdown a{
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+        }
+        .dropdown .content{
+            display: none;
+            position: relative;
+            background-color: #7e8deb;
+            min-width: 135px;
+            box-shadow: 2px 2px 5px hsla(0, 0%, 0%, 0.6);
+            z-index: 1;
+        }
+        .dropdown:hover .content{
+            display: block;
+        }
+        .dropdown:hover button{
+            background-color: #7e8deb;
+        }
+        .dropdown a:hover{
+            background-color: #6e7cda;
+        }
+        p{
+            font-size: 1em;
+        }
+        .background {
+            height: 100vh;
+            background-image: url('background/stars.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: repeat;
+        }
+    </style>
+
+</head>
+
+<body class="background">
+    
+    <h1 class="gamja-flower-regular">SafeKids</h1>
+
+    <nav class="navbar">
+        <ul>
+            <div class="navdiv">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <button>Police</button>
+                        <div class="content">
+                            <a href="Police.html">How to</a>
+                            <a href="Safety.html">Safety</a>
+                        </div>
+                    </li>
+                    <li><a href="MentalHealth.html">Mental Health</a></li>
+                    <li class = "dropdown">
+                        <button>Personal Hygiene</button>
+                        <div class = "content">
+                            <a href="PersonalHygieneTeens.html">Teens</a>
+                            <a href="PersonalHygieneKids.html">Kids</a>
+                        </div>
+                    </li>
+                    <li><a href="SocialEtiquette.html">Social Etiquette</a></li>
+                    <li class = "dropdown">
+                        <button>PLAY</button>
+                        <div class = "content">
+                            <a href="EmergencyProtocal.html">Protocal quiz</a>
+                            <a href="safetyquiz.html">Safety quiz</a>
+                            <a href="TeenHygieneQuiz.html">Hygiene quiz</a>
+                            <a href="KidHygieneQuiz.html">Kid Hygiene quiz</a>
+                            <a href="SocialEtiquetteQuiz.html">Etiquette quiz</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </ul>
+    </nav>
+
+    <main class="walter-turncoat-regular centered-text">
+        <img src="Pictures/Police.jpg">
+
+        <p>How to reach the police:</p>
+        <ol>
+            <li>Find an Adult: If you need help, find a trusted adult, like a parent, teacher, or neighbor.</li>
+            <li>Call 911: If it’s an emergency (like if someone is hurt or in danger), use a phone to call 911.</li>
+        </ol>
+        <p>What to say:</p>
+        <ul>
+            <li>Your name: "My name is[your name]."</li>
+            <li>Where you are: "I am at [your location]."</li>
+            <li>What's happening: "I need help because [explain the situation]."</li>
+        </ul>
+        <p> How to act around police officers:</p>
+        <p> When you're lost:</p>
+        <ul>
+            <li>Stay calm and look for a police officer.</li>
+            <li>Tell them your name, address, and parent's phone number.</li>
+            <li>Stay with the officer until your parents arrive.</li>
+        </ul>
+        <p> When you see an accident:</p>
+        <ul>
+            <li>Stay Safe: Move to a safe spot away from the accident.</li>
+            <li>Call for Help: Dial 911 or ask an adult to call for help.</li>
+            <li>Provide Information: Tell the operator where you are, what happened, and if anyone is hurt.</li>
+            <li>Wait: Stay on the line until the operator tells you it’s okay to hang up...</li>
+        </ul>
+        <p>If an officer talks to you:</p>
+        <ul>
+            <li>Stay Calm and Polite: Always be respectful and listen carefully to what the officer is saying.</li>
+            <li>Answer Questions: Answer their questions honestly and clearly. It's okay to ask if you don’t understand something.</li>
+            <li>Stay Still: Keep your hands where the officer can see them and don’t make sudden movements.</li>
+        </ul>
+        <p>In an Emergency:</p>
+        <ul>
+            <li>Call 911 if you need help right away.</li>
+            <li>Tell them your name, location, and what’s happening.</li>
+            <li>Follow their instructions.</li>
+        </ul>
+        <p>If you get stopped:</p>
+        <ul>
+            <li>Stay where you are.</li>
+            <li>Keep your hands where the officer can see them.</li>
+            <li>Stay Calm: Even if you’re nervous, try to stay calm and follow their instructions</li>
+        </ul>
+    </main>
+ 
+
+
+</body>
+</html>

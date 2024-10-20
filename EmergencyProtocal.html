@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safety Quiz for Kids</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #c5cae9;
+            margin: 0;
+            padding: 20px;
+        }
+        .question {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+        .question h2 {
+            font-size: 20px;
+        }
+        .answers {
+            margin-top: 10px;
+        }
+        .btn {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .result {
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+        .correct {
+            color: green;
+            font-weight: bold;
+        }
+        .incorrect {
+            color: red;
+            font-weight: bold;
+        }
+        #quiz-completed {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1> Police Quiz </h1>
+    <div id="quiz">
+        <div class="question" id="question-1">
+            <h2>If you need help, who should you find?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(1, 'trusted_adult')">A. A trusted adult</button>
+                <button class="btn" onclick="checkAnswer(1, 'stranger')">B. A stranger</button>
+            </div>
+            <div id="result-1" class="result"></div>
+        </div>
+        <div class="question" id="question-2" style="display: none;">
+            <h2>What number should you call in an emergency?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(2, '999')">A. 999</button>
+                <button class="btn" onclick="checkAnswer(2, '911')">B. 911</button>
+                <button class="btn" onclick="checkAnswer(2, '919')">C. 919</button>
+                <button class="btn" onclick="checkAnswer(2, '119')">D. 119</button>
+
+
+            </div>
+            <div id="result-2" class="result"></div>
+        </div>
+        <div class="question" id="question-3" style="display: none;">
+            <h2>What should you tell the operator first when you call 911?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(3, 'name')">A. Your name</button>
+                <button class="btn" onclick="checkAnswer(3, 'location')">B. Your location</button>
+                <button class="btn" onclick="checkAnswer(3, 'Silent')">C. Stay Silent</button>
+                <button class="btn" onclick="checkAnswer(3, 'Hang_up')">D. Hang up</button>
+
+            </div>
+            <div id="result-3" class="result"></div>
+        </div>
+        <div class="question" id="question-4" style="display: none;">
+            <h2>How should you act when an officer talks to you?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(4, 'nervous')">A. Nervous and scared</button>
+                <button class="btn" onclick="checkAnswer(4, 'calm')">B. Calm and polite</button>
+
+            </div>
+            <div id="result-4" class="result"></div>
+        </div>
+        <div class="question" id="question-5" style="display: none;">
+            <h2>If you see an accident, what should you do first?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(5, 'stay_safe')">A. Move to a safe spot</button>
+                <button class="btn" onclick="checkAnswer(5, 'run_away')">B. Run away</button>
+            </div>
+            <div id="result-5" class="result"></div>
+        <div class="question" id="question-6" style="display: none;">
+            <h2>If you get stopped?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(5, 'run_away')">A. Run away</button>
+                <button class="btn" onclick="checkAnswer(5, 'rude')">B. Yell at them</button>
+                <button class="btn" onclick="checkAnswer(5, 'stay_safe')">C. Be polite and stay calm </button>
+                <button class="btn" onclick="checkAnswer(5, 'Physical')">D. Kick them </button>
+
+
+            </div>
+            <div id="result-5" class="result"></div>
+        </div>
+    </div>
+    <div id="quiz-completed">
+        <h2>Quiz Completed!</h2>
+        <p>You answered <span id="correct-answers-count"></span> out of 5 questions correctly.</p>
+        <button class="btn" onclick="retryQuiz()">Retry Quiz</button>
+    </div>
+    <script>
+        let currentQuestion = 1;
+        let correctAnswersCount = 0;
+        function checkAnswer(question, answer) {
+            const correctAnswers = {
+                1: 'trusted_adult',
+                2: '911',
+                3: 'name',
+                4: 'calm',
+                5: 'stay_safe',
+            };
+            const resultDiv = document.getElementById(`result-${question}`);
+            const buttons = document.querySelectorAll(`#question-${question} button`);
+            const correctAnswer = correctAnswers[question];
+            buttons.forEach(button => button.disabled = true); // Disable buttons after answering
+            if (answer === correctAnswer) {
+                resultDiv.innerHTML = "Correct!";
+                resultDiv.className = "result correct";
+                correctAnswersCount++;
+            } else {
+                resultDiv.innerHTML = "Incorrect!";
+                resultDiv.className = "result incorrect";
+            }
+            // Move to the next question
+            setTimeout(() => {
+                document.getElementById(`question-${question}`).style.display = 'none';
+                currentQuestion++;
+                if (currentQuestion <= 5) {
+                    document.getElementById(`question-${currentQuestion}`).style.display = 'block';
+                } else {
+                    document.getElementById('quiz').style.display = 'none';
+                    document.getElementById('quiz-completed').style.display = 'block';
+                    document.getElementById('correct-answers-count').innerText = correctAnswersCount;
+                }
+            }, 1000);
+        }
+        function retryQuiz() {
+            currentQuestion = 1;
+            correctAnswersCount = 0;
+            document.getElementById('quiz').style.display = 'block';
+            document.getElementById('quiz-completed').style.display = 'none';
+            for (let i = 1; i <= 5; i++) {
+                document.getElementById(`question-${i}`).style.display = 'none';
+                const resultDiv = document.getElementById(`result-${i}`);
+                resultDiv.innerHTML = "";
+                const buttons = document.querySelectorAll(`#question-${i} button`);
+                buttons.forEach(button => button.disabled = false);
+            }
+            document.getElementById(`question-1`).style.display = 'block';
+        }
+    </script>
+</body>
+</html>

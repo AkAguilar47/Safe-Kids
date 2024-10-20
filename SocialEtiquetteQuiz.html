@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Etiquette Quiz for Teens</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color:  #ff9999;
+            margin: 0;
+            padding: 20px;
+        }
+        .question {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+        .question h2 {
+            font-size: 20px;
+        }
+        .answers {
+            margin-top: 10px;
+        }
+        .btn {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .result {
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+        .correct {
+            color: green;
+            font-weight: bold;
+        }
+        .incorrect {
+            color: red;
+            font-weight: bold;
+        }
+        #quiz-completed {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Social Etiquette Quiz</h1>
+    <div id="quiz">
+        <div class="question" id="question-1">
+            <h2>What should you say when asking for something or receiving something?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(1, 'please_thank_you')">A. Please and Thank You</button>
+                <button class="btn" onclick="checkAnswer(1, 'give_me')">B. Give me</button>
+            </div>
+            <div id="result-1" class="result"></div>
+        </div>
+        <div class="question" id="question-2" style="display: none;">
+            <h2>What should you do when waiting in lines or playing games?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(2, 'take_turns')">A. Wait for your turn patiently</button>
+                <button class="btn" onclick="checkAnswer(2, 'push')">B. Push to the front</button>
+            </div>
+            <div id="result-2" class="result"></div>
+        </div>
+        <div class="question" id="question-3" style="display: none;">
+            <h2>What kind of voice should you use indoors?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(3, 'indoor_voice')">A. Indoor voice</button>
+                <button class="btn" onclick="checkAnswer(3, 'shout')">B. Shout</button>
+            </div>
+            <div id="result-3" class="result"></div>
+        </div>
+        <div class="question" id="question-4" style="display: none;">
+            <h2>What does respecting personal space mean?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(4, 'respect_space')">A. Give people enough space and don't push or shove</button>
+                <button class="btn" onclick="checkAnswer(4, 'invade_space')">B. Push and shove people</button>
+            </div>
+            <div id="result-4" class="result"></div>
+        </div>
+        <div class="question" id="question-5" style="display: none;">
+            <h2>How should you act towards others?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(5, 'be_respectful')">A. Use kind words and be nice</button>
+                <button class="btn" onclick="checkAnswer(5, 'be_mean')">B. Be mean and rude</button>
+            </div>
+            <div id="result-5" class="result"></div>
+        </div>
+        <div class="question" id="question-6" style="display: none;">
+            <h2>What should you do when you cough or sneeze?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(6, 'cover_mouth')">A. Cover your mouth with a tissue or your elbow</button>
+                <button class="btn" onclick="checkAnswer(6, 'no_cover')">B. Don't cover your mouth</button>
+            </div>
+            <div id="result-6" class="result"></div>
+        </div>
+        <div class="question" id="question-7" style="display: none;">
+            <h2>What should you do if you get lost or need help?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(7, 'ask_help')">A. Find a trusted adult</button>
+                <button class="btn" onclick="checkAnswer(7, 'stay_lost')">B. Stay lost and don't ask for help</button>
+            </div>
+            <div id="result-7" class="result"></div>
+        </div>
+        <div class="question" id="question-8" style="display: none;">
+            <h2>What should you do after using something or making a mess?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(8, 'clean_up')">A. Pick up your trash and clean up your area</button>
+                <button class="btn" onclick="checkAnswer(8, 'leave_mess')">B. Leave everything messy</button>
+            </div>
+            <div id="result-8" class="result"></div>
+        </div>
+        <div class="question" id="question-9" style="display: none;">
+            <h2>What should you do when entering or leaving a building with others?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(9, 'hold_door')">A. Hold the door open for others</button>
+                <button class="btn" onclick="checkAnswer(9, 'let_door_close')">B. Let the door close on others</button>
+            </div>
+            <div id="result-9" class="result"></div>
+        </div>
+        <div class="question" id="question-10" style="display: none;">
+            <h2>What should you do if you see an elderly person or pregnant woman standing on a bus or train?</h2>
+            <div class="answers">
+                <button class="btn" onclick="checkAnswer(10, 'offer_seat')">A. Offer them your seat</button>
+                <button class="btn" onclick="checkAnswer(10, 'ignore')">B. Ignore them and keep sitting</button>
+            </div>
+            <div id="result-10" class="result"></div>
+        </div>
+    </div>
+    <div id="quiz-completed">
+        <h2>Quiz Completed!</h2>
+        <p>You answered <span id="correct-answers-count"></span> out of 10 questions correctly.</p>
+        <button class="btn" onclick="retryQuiz()">Retry Quiz</button>
+    </div>
+    <script>
+        let currentQuestion = 1;
+        let correctAnswersCount = 0;
+        function checkAnswer(question, answer) {
+            const correctAnswers = {
+                1: 'please_thank_you',
+                2: 'take_turns',
+                3: 'indoor_voice',
+                4: 'respect_space',
+                5: 'be_respectful',
+                6: 'cover_mouth',
+                7:  'ask_help',
+                8: 'clean_up',
+                9: 'hold_door',
+                10: 'offer_seat',
+            };
+            const resultDiv = document.getElementById(`result-${question}`);
+            const buttons = document.querySelectorAll(`#question-${question} button`);
+            const correctAnswer = correctAnswers[question];
+            buttons.forEach(button => button.disabled = true); // Disable buttons after answering
+            if (answer === correctAnswer) {
+                resultDiv.innerHTML = "Correct!";
+                resultDiv.className = "result correct";
+                correctAnswersCount++;
+            } else {
+                resultDiv.innerHTML = "Incorrect!";
+                resultDiv.className = "result incorrect";
+            }
+            // Move to the next question
+            setTimeout(() => {
+                document.getElementById(`question-${question}`).style.display = 'none';
+                currentQuestion++;
+                if (currentQuestion <= 8) {
+                    document.getElementById(`question-${currentQuestion}`).style.display = 'block';
+                } else {
+                    document.getElementById('quiz').style.display = 'none';
+                    document.getElementById('quiz-completed').style.display = 'block';
+                    document.getElementById('correct-answers-count').innerText = correctAnswersCount;
+                }
+            }, 1000);
+        }
+        function retryQuiz() {
+            currentQuestion = 1;
+            correctAnswersCount = 0;
+            document.getElementById('quiz').style.display = 'block';
+            document.getElementById('quiz-completed').style.display = 'none';
+            for (let i = 1; i <= 8; i++) {
+                document.getElementById(`question-${i}`).style.display = 'none';
+                const resultDiv = document.getElementById(`result-${i}`);
+                resultDiv.innerHTML = "";
+                const buttons = document.querySelectorAll(`#question-${i} button`);
+                buttons.forEach(button => button.disabled = false);
+            }
+            document.getElementById(`question-1`).style.display = 'block';
+        }
+    </script>
+</body>
+</html>
